@@ -2,6 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  mode: 'spa',
   server: {
     host: '0'
   },
@@ -53,7 +54,7 @@ export default {
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'http://127.0.0.1:1337/',
+    baseURL: 'https://jirapatk-strapi.herokuapp.com/',
     credentials: true
   },
 

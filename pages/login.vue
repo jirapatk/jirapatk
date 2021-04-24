@@ -68,7 +68,6 @@ export default {
         await this.$auth.loginWith('local', {
           data: payload
         })
-        this.$auth.setUser('user.data')
         this.$router.push('/')
         console.log()
       } catch (e) {
