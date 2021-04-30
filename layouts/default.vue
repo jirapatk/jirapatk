@@ -43,8 +43,10 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
+      <!-- <v-container class="mx-6"> -->
+      <v-container class="my-6">
         <nuxt />
+      </v-container>
       </v-container>
     </v-main>
     <v-footer
@@ -57,11 +59,13 @@
 </template>
 
 <script>
+/* eslint-disable vue/require-prop-types */
+
 export default {
   middleware: 'auth',
   data () {
     return {
-      clipped: true,
+      clipped: false,
       drawer: false,
       fixed: false,
       items: [
@@ -76,9 +80,14 @@ export default {
           to: '/inspire'
         },
         {
-          icon: 'mdi-account',
+          icon: 'mdi-account-check',
           title: 'ลูกค้า',
           to: '/customer'
+        },
+        {
+          icon: 'mdi-account-settings-outline',
+          title: 'ผู้ใช้งานระบบ',
+          to: '/users'
         }
       ],
       miniVariant: false,
@@ -97,6 +106,7 @@ export default {
 </script>
 
 <style>
+
   html
 #app {
   font-family: 'IBM Plex Sans Thai', sans-serif;
