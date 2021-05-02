@@ -2,51 +2,73 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
       fixed
       app
     >
       <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
+        <v-list-item class="px-2">
+          <div class="my-6 mx-2">
+            <h1>Nuxt</h1>
+          </div>
+        </v-list-item>
+
+        <v-list-item link>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title class="title">
+              {{ user.Name }}
+            </v-list-item-title>
+            <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <v-divider />
+
+      <v-list
+        nav
+        dense
+      >
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+            :to="item.to"
+            router
+            exact
+            color="primary"
+          >
+            <v-list-item-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title v-text="item.title" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-list>
+
+      <template #append>
+        <div class="pa-2">
+          <v-list-item block color="primary" @click="logout">
+            Logout
+          </v-list-item>
+        </div>
+      </template>
     </v-navigation-drawer>
     <v-app-bar
       :clipped-left="clipped"
       fixed
       app
+      dark
+      color="primary"
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title" />
       <v-spacer />
-      <v-btn elevation="0" @click="logout">
-        Logout
-      </v-btn>
     </v-app-bar>
     <v-main>
       <!-- <v-container class="mx-6"> -->
       <v-container class="my-6">
         <nuxt />
-      </v-container>
       </v-container>
     </v-main>
     <v-footer
@@ -65,35 +87,41 @@ export default {
   middleware: 'auth',
   data () {
     return {
+      user: this.$auth.user,
       clipped: false,
       drawer: false,
-      fixed: false,
+      fixed: true,
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'หน้าหลัก',
           to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
         },
         {
           icon: 'mdi-account-check',
           title: 'ลูกค้า',
-          to: '/customer'
+          to: '/customers'
         },
         {
           icon: 'mdi-account-settings-outline',
           title: 'ผู้ใช้งานระบบ',
           to: '/users'
+        },
+        {
+          icon: 'mdi-file-document',
+          title: 'ใบเสนอราคา',
+          to: '/quotations'
+        },
+        {
+          icon: 'mdi-marker-check',
+          title: 'สาขา',
+          to: '/branches'
         }
       ],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: 'Suriya Group'
     }
   },
   methods: {
@@ -109,6 +137,6 @@ export default {
 
   html
 #app {
-  font-family: 'IBM Plex Sans Thai', sans-serif;
+  font-family: 'FC Iconic', sans-serif;
 }
 </style>

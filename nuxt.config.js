@@ -18,7 +18,11 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         rel: 'stylesheet',
-        href: 'https://cdn.lazywasabi.net/fonts/IBMPlexSansThai/IBMPlexSansThai.css'
+        href: 'https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;600&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://storage.googleapis.com/cdn-suriyait/fonts/FCIconic/FCIconic.css'
       }
     ]
   },
@@ -26,6 +30,9 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
   ],
+  tailwindcss: {
+    jit: true
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
@@ -49,13 +56,14 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     '@nuxtjs/auth-next',
-    'nuxt-sweetalert2'
+    'nuxt-sweetalert2',
+    ['nuxt-tailvue', { toast: true }]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: 'https://jirapatk-strapi.herokuapp.com/',
-    credentials: true
+    baseURL: 'http://192.168.1.203:1337/',
+    credentials: false
   },
 
   auth: {

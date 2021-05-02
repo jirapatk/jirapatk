@@ -5,7 +5,7 @@
       <v-card m>
         <v-card-title>
           <h3>
-            ยินดีต้อนรับคุณ {{ user.username }}
+            ยินดีต้อนรับคุณ {{ user.Name }}
           </h3>
         </v-card-title>
         <v-card-text>

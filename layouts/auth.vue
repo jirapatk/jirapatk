@@ -4,6 +4,6 @@
 
 <style>
 body{
-  font-family: 'IBM Plex Sans Thai', sans-serif
+  font-family: 'FC Iconic', sans-serif;
 }
 </style>
